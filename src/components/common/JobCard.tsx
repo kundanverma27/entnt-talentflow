@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 interface JobCardProps {
   job: Job;
+  darkTheme?: boolean;
 }
 
 const JobCard: React.FC<JobCardProps> = ({ job }) => {
