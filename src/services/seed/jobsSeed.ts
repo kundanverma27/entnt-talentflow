@@ -14,7 +14,7 @@ export interface Job {
   salary: string;
   location: string;
   jobType: 'Full-time' | 'Remote' | 'Part-time' | 'Contract';
-  createdAt: Date;
+  createdAt: string; // ✅ store as ISO string for JSON compatibility
 }
 
 const jobTitles = [
@@ -48,8 +48,9 @@ function generateJob(index: number): Job {
     salary: `$${faker.number.int({ min: 50, max: 200 })}K - $${faker.number.int({ min: 200, max: 300 })}K`,
     location: faker.location.city() + ', ' + faker.location.state(),
     jobType: faker.helpers.arrayElement(jobTypes),
-    createdAt: faker.date.past({ years: 1 })
+    createdAt: faker.date.past({ years: 1 }).toISOString(), // ✅ ISO string
   };
 }
 
+// ✅ generate static array once
 export const jobsSeed: Job[] = Array.from({ length: 25 }, (_, i) => generateJob(i));

@@ -12,8 +12,8 @@ export interface Candidate {
   phone: string;
   resume: string;
   notes: string[];
-  appliedAt: Date;
-  updatedAt: Date;
+  appliedAt: string; // ✅ ISO string for JSON
+  updatedAt: string; // ✅ ISO string for JSON
   coverLetter?: string;
   experience?: string;
   skills?: string[];
@@ -41,13 +41,13 @@ function generateCandidate(index: number, jobIds: string[]): Candidate {
     id: `candidate-${index + 1}`,
     name: `${firstName} ${lastName}`,
     email: faker.internet.email({ firstName, lastName }),
-    stage: faker.helpers.arrayElement(stages),
+    stage: faker.helpers.arrayElement(stages) as Candidate['stage'], // ✅ type-safe
     jobId: faker.helpers.arrayElement(jobIds),
     phone: faker.phone.number(),
     resume: faker.internet.url(),
     notes: Array.from({ length: faker.number.int({ min: 0, max: 3 }) }, () => faker.lorem.sentence()),
-    appliedAt: faker.date.past({ years: 1 }),
-    updatedAt: faker.date.recent({ days: 30 }),
+    appliedAt: faker.date.past({ years: 1 }).toISOString(), // ✅ ISO string
+    updatedAt: faker.date.recent({ days: 30 }).toISOString(), // ✅ ISO string
     coverLetter,
     experience,
     skills,
