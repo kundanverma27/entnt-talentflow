@@ -12,12 +12,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
-  }
-}
-
-{
-  "compilerOptions": {
+    },
     "noEmitOnError": false
   }
 }
