@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-faker.seed(12345); // For consistent data across refreshes
+faker.seed(12345);
 
 export interface Job {
   id: string;
@@ -30,26 +30,21 @@ const techTags = [
   'MongoDB', 'PostgreSQL', 'Redis', 'GraphQL', 'REST API'
 ];
 
-// Job types as provided by user
 const jobTypes: Job['jobType'][] = ['Full-time', 'Remote', 'Part-time', 'Contract'];
-
-// Popular tech companies for more realistic data
 
 function generateJob(index: number): Job {
   const title = faker.helpers.arrayElement(jobTitles);
   const slug = title.toLowerCase().replace(/\s+/g, '-') + '-' + faker.string.alphanumeric(4);
-  
+
   return {
     id: `job-${index + 1}`,
     title,
     slug,
-    status: faker.helpers.arrayElement(['active', 'active', 'active', 'archived']), // 75% active
+    status: faker.helpers.arrayElement(['active', 'active', 'active', 'archived']),
     tags: faker.helpers.arrayElements(techTags, { min: 2, max: 5 }),
     order: index,
     description: faker.lorem.paragraphs(2),
-    requirements: Array.from({ length: faker.number.int({ min: 3, max: 6 }) }, 
-      () => faker.lorem.sentence()
-    ),
+    requirements: Array.from({ length: faker.number.int({ min: 3, max: 6 }) }, () => faker.lorem.sentence()),
     salary: `$${faker.number.int({ min: 50, max: 200 })}K - $${faker.number.int({ min: 200, max: 300 })}K`,
     location: faker.location.city() + ', ' + faker.location.state(),
     jobType: faker.helpers.arrayElement(jobTypes),
