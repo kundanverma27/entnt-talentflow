@@ -86,7 +86,7 @@ export const SAMPLE_JOBS: Job[] = [
     id: '3',
     title: 'Product Manager',
     company: 'Apple',
-    location: 'New York, United States',
+    location: 'New jersey, United States',
     type: 'Full-time',
     salary: '$7,200/Month',
     description: 'Drive product strategy and work with cross-functional teams.',
@@ -99,6 +99,6 @@ export const SAMPLE_JOBS: Job[] = [
 // Company Info
 export const COMPANY_INFO = {
   name: 'TalentFlow',
-  tagline: 'Transform Your Hiring Process With Smarter, Faster, Data-Driven Technology',
-  description: 'From sourcing to onboarding, our platform streamlines every step. Hire confidently with tools built to reduce bias and boost efficiency.',
+  tagline: ' Your Hiring Process With Smarter, Faster, Data-Driven Technology',
+  description: "Our platform simplifies every stage of hiring—from sourcing to onboarding—helping you hire smarter, minimize bias, and maximize efficiency.",
 };

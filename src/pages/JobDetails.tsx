@@ -27,14 +27,10 @@ const JobDetails: React.FC = () => {
       }
     };
 
-    if (id) {
-      fetchJob();
-    }
+    if (id) fetchJob();
   }, [id, navigate]);
 
-  const handleApply = () => {
-    setShowApplicationModal(true);
-  };
+  const handleApply = () => setShowApplicationModal(true);
 
   const handleApplicationSuccess = () => {
     toast.success(`Application submitted successfully for ${job?.title}!`);
@@ -43,18 +39,14 @@ const JobDetails: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-3/4 mb-4"></div>
-            <div className="h-4 bg-gray-200 rounded w-1/2 mb-8"></div>
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-              <div className="space-y-4">
-                <div className="h-4 bg-gray-200 rounded w-full"></div>
-                <div className="h-4 bg-gray-200 rounded w-5/6"></div>
-                <div className="h-4 bg-gray-200 rounded w-4/6"></div>
-              </div>
-            </div>
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="animate-pulse w-full max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
+          <div className="h-8 bg-gray-800 rounded w-3/4 mb-4"></div>
+          <div className="h-4 bg-gray-800 rounded w-1/2 mb-8"></div>
+          <div className="bg-gray-900 rounded-lg border border-gray-700 p-8 space-y-4">
+            <div className="h-4 bg-gray-800 rounded w-full"></div>
+            <div className="h-4 bg-gray-800 rounded w-5/6"></div>
+            <div className="h-4 bg-gray-800 rounded w-4/6"></div>
           </div>
         </div>
       </div>
@@ -63,68 +55,62 @@ const JobDetails: React.FC = () => {
 
   if (!job) {
     return (
-      <div className="min-h-screen bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">
-              Job Not Found
-            </h1>
-            <p className="text-gray-600 mb-8">
-              The job you're looking for doesn't exist or has been removed.
-            </p>
-            <Button
-              variant="default"
-              className="bg-emerald-600 hover:bg-emerald-700 text-white"
-              onClick={() => navigate("/jobs")}
-            >
-              Browse All Jobs
-            </Button>
-          </div>
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="max-w-4xl px-4 sm:px-6 lg:px-8 py-8 text-center">
+          <h1 className="text-2xl font-bold mb-4">Job Not Found</h1>
+          <p className="text-gray-400 mb-8">
+            The job you're looking for doesn't exist or has been removed.
+          </p>
+          <Button
+            variant="default"
+            className="bg-emerald-600 hover:bg-emerald-700 text-white"
+            onClick={() => navigate("/jobs")}
+          >
+            Browse All Jobs
+          </Button>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-black text-white">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex justify-between items-center">
-            <Button
-              variant="outline"
-              onClick={() => navigate("/jobs")}
-              className="flex items-center space-x-2 hover:bg-gray-100 hover:text-emerald-600"
+      <div className="bg-gray-900 shadow-sm border-b border-gray-700">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center">
+          <Button
+            variant="outline"
+            onClick={() => navigate("/jobs")}
+            className="flex items-center space-x-2 border-gray-600 hover:bg-gray-800 hover:text-emerald-500"
+          >
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                />
-              </svg>
-              <span>Back</span>
-            </Button>
-          </div>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
+            </svg>
+            <span>Back</span>
+          </Button>
         </div>
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+        <div className="bg-gray-900 rounded-lg border border-gray-700 overflow-hidden">
           {/* Job Header */}
-          <div className="p-8 border-b border-gray-200">
+          <div className="p-8 border-b border-gray-700">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
               <div className="flex-1">
-                <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                <h1 className="text-3xl font-bold mb-2 text-emerald-500">
                   {job.title}
                 </h1>
-                <div className="flex flex-wrap items-center gap-4 text-gray-600 mb-4">
+                <div className="flex flex-wrap items-center gap-4 text-gray-400 mb-4">
                   <span className="flex items-center">
                     <svg
                       className="w-5 h-5 mr-2"
@@ -181,13 +167,13 @@ const JobDetails: React.FC = () => {
                   </span>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-emerald-100 text-emerald-800 text-sm font-medium rounded-full">
+                  <span className="px-3 py-1 bg-emerald-800 text-emerald-200 text-sm font-medium rounded-full">
                     {job.jobType || "Job"}
                   </span>
                   {job.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full"
+                      className="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded-full"
                     >
                       {tag}
                     </span>
@@ -209,35 +195,33 @@ const JobDetails: React.FC = () => {
 
           {/* Job Content */}
           <div className="p-8">
-            <div className="prose max-w-none">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+            <div className="prose max-w-none text-gray-300">
+              <h2 className="text-2xl font-semibold mb-4 text-white">
                 Job Description
               </h2>
-              <div className="text-gray-700 whitespace-pre-wrap mb-8">
-                {job.description}
-              </div>
+              <div className="whitespace-pre-wrap mb-8">{job.description}</div>
 
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h2 className="text-2xl font-semibold mb-4 text-white">
                 Requirements
               </h2>
-              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-8">
-                {job.requirements.map((requirement, index) => (
-                  <li key={index}>{requirement}</li>
+              <ul className="list-disc list-inside space-y-2 mb-8">
+                {job.requirements.map((req, i) => (
+                  <li key={i}>{req}</li>
                 ))}
               </ul>
 
-              <div className="bg-gray-50 rounded-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <div className="bg-gray-800 rounded-lg p-6">
+                <h3 className="text-lg font-semibold mb-2 text-white">
                   Ready to Apply?
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="mb-4 text-gray-300">
                   Click the "Apply Now" button above to submit your application
                   for this position.
                 </p>
                 <Button
                   variant="default"
                   onClick={handleApply}
-                  className="bg-emerald-600 hover:bg-emerald-700"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white"
                 >
                   Submit Application
                 </Button>
